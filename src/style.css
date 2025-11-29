@@ -1,0 +1,10 @@
+.mask-box{
+  border: 1px solid white;
+  /* transition: all 0.1s cubic-bezier(0.215, 0.610, 0.355, 1); */
+}
+
+canvas{
+  height: 100%;
+  width: 100%;
+  display: block;
+}

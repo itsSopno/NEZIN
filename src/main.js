@@ -1,36 +1,41 @@
 const video = document.querySelector("#clip-video");
 const masks = document.querySelectorAll(".mask-box");
 
+
+
 function drawClipped(ctx, video, rect) {
   // Calculate aspect ratios
   const videoAspect = video.videoWidth / video.videoHeight;
-  const canvasAspect = rect.width / rect.height;
+  const windowAspect = window.innerWidth / window.innerHeight;
   
-  let sx, sy, sWidth, sHeight;
+  // Calculate how the video would be displayed to cover the entire window
+  let displayWidth, displayHeight, displayX, displayY;
   
-  if (videoAspect > canvasAspect) {
-    // Video is wider - clip horizontally
-    sHeight = video.videoHeight;
-    sWidth = video.videoHeight * canvasAspect;
-    sx = (video.videoWidth - sWidth) / 2;
-    sy = 0;
+  if (videoAspect > windowAspect) {
+    // Video is wider - fit to height, center horizontally
+    displayHeight = window.innerHeight;
+    displayWidth = displayHeight * videoAspect;
+    displayX = (window.innerWidth - displayWidth) / 2;
+    displayY = 0;
   } else {
-    // Video is taller - clip vertically
-    sWidth = video.videoWidth;
-    sHeight = video.videoWidth / canvasAspect;
-    sx = 0;
-    sy = (video.videoHeight - sHeight) / 2;
+    // Video is taller - fit to width, center vertically
+    displayWidth = window.innerWidth;
+    displayHeight = displayWidth / videoAspect;
+    displayX = 0;
+    displayY = (window.innerHeight - displayHeight) / 2;
   }
   
-  // Calculate the portion of the video to show based on mask position
-  const scaleX = video.videoWidth / window.innerWidth;
-  const scaleY = video.videoHeight / window.innerHeight;
+  // Calculate the scale factor between video dimensions and display dimensions
+  const scaleX = video.videoWidth / displayWidth;
+  const scaleY = video.videoHeight / displayHeight;
   
-  const sourceX = rect.left * scaleX;
-  const sourceY = rect.top * scaleY;
+  // Calculate which portion of the video corresponds to the mask position
+  const sourceX = (rect.left - displayX) * scaleX;
+  const sourceY = (rect.top - displayY) * scaleY;
   const sourceWidth = rect.width * scaleX;
   const sourceHeight = rect.height * scaleY;
   
+  // Draw the corresponding portion of the video to the canvas
   ctx.drawImage(
     video,
     sourceX,
@@ -43,6 +48,7 @@ function drawClipped(ctx, video, rect) {
     rect.height
   );
 }
+
 
 function draw() {
   masks.forEach((mask) => {

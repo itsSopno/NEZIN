@@ -60,7 +60,7 @@ const Navbar = () => {
   const menuItems = [
     { name: 'Login', path: '/login' },
     { name: 'Work', path: '/work' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Contact', path: '/Contact' },
     { name: 'Dashboard', path: '/dashboard' },
     { name: 'Neural Link', path: '/neural' },
     { name: 'Archives', path: '/archives' },

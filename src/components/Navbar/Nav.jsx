@@ -58,13 +58,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
+    {name : "Story", path :"/story"},
     { name: 'Login', path: '/login' },
-    { name: 'Work', path: '/work' },
     { name: 'Contact', path: '/Contact' },
     { name: 'Dashboard', path: '/dashboard' },
-    { name: 'Neural Link', path: '/neural' },
-    { name: 'Archives', path: '/archives' },
-    { name: 'System Logs', path: '/logs' },
   ];
 
   return (

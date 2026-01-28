@@ -1,10 +1,11 @@
 import React from "react";
 import { createBrowserRouter } from "react-router";
 import Home from "../Home/Home";
-import App from "../App";
-import Bbody from "../components/Main/Body";
+
 import Login from "../components/LOgin/login";
 import Contact from "../components/Contact/Contact";
+import MainApp from "../components/MainAPP/MainApp";
+import StoryMain from "../components/Main story/StoryMian";
 const Router = createBrowserRouter([
   {
     path :"/",
@@ -12,7 +13,7 @@ const Router = createBrowserRouter([
     children :[
         {
         index:true,
-        element: <Bbody></Bbody>
+        element: <MainApp></MainApp>
         },
         {
           path :"/login",
@@ -21,6 +22,10 @@ const Router = createBrowserRouter([
         {
           path :"/Contact",
           element :<Contact></Contact>
+        },
+        {
+          path :"/story",
+          element :<StoryMain></StoryMain>
         }
     ]
 }

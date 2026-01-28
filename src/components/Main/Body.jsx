@@ -22,6 +22,8 @@ import React, { useEffect } from "react";
 import App from "../../App";
 import Story from "../Story/Story";
 import Lenis from "@studio-freight/lenis";
+import StoryMain from "../Main story/StoryMian";
+import Privacy from "../Privacy/privacy";
 
 const Bbody = () => {
   useEffect(() => {
@@ -61,6 +63,9 @@ const Bbody = () => {
       <section className="relative z-20">
         <Story />
       </section>
+    <section>
+        <Privacy></Privacy>
+    </section>
     </div>
   );
 };

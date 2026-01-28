@@ -9,29 +9,7 @@
     <link rel="stylesheet" href="/src/style.css">
   </head>
   <body>
-    <div class="hero h-screen w-full bg-black">
-      <video id="clip-video" src="/1.mp4" muted autoplay loop class="hidden"></video>
-
-      <div class="mask-box fixed w-[60vw] h-[35vw] top-[10vh] left-[10vw]">
-        <canvas></canvas>
-      </div>
-
-      <div class="mask-box fixed w-[17vw] h-[9vw] top-[5vh] left-[5vw]">
-        <canvas></canvas>
-      </div>
-
-      <div class="mask-box fixed w-[35vw] h-[19vw] top-[5vh] right-[5vw]">
-        <canvas></canvas>
-      </div>
-
-      <div class="mask-box fixed w-[38vw] h-[22vw] top-[50vh] left-[5vw]">
-        <canvas></canvas>
-      </div>
-
-      
-
-    </div>
-    
-    <script type="module" src="/src/main.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

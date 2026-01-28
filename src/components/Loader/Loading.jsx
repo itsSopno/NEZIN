@@ -12,7 +12,7 @@ const Preloader = ({ onComplete }) => {
     }
     const timer = setTimeout(() => {
       setIndex(index + 1);
-    }, 1000); // Fast, rhythmic sequence
+    }, 1499); // Fast, rhythmic sequence
     return () => clearTimeout(timer);
   }, [index, onComplete]);
 

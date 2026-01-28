@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Preloader = ({ onComplete }) => {
   const [index, setIndex] = useState(0);
-  const words = ["NEZIN", "PROTOCOL", "ARCHIVES", "EST. 2026", "SYSTEM_ON"];
+  const words = ["NEZIN", "We don't design clothes", "We design confidence", "X STUDIO SINNERS", "EST 2026"];
 
   useEffect(() => {
     if (index === words.length) {

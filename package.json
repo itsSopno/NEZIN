@@ -13,9 +13,13 @@
     "vite": "^6.0.5"
   },
   "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
+    "axios": "^1.13.3",
+    "firebase": "^12.8.0",
     "gsap": "^3.13.0",
     "motion": "^12.29.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router": "^7.13.0"
   }
 }

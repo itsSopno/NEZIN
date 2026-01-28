@@ -1,212 +1,156 @@
-// import React, { useRef, useEffect, useState, useCallback } from 'react'
 
-// const MaskBox = ({ image, initialStyle }) => {
-//   const canvasRef = useRef(null)
-//   const maskRef = useRef(null)
-//   const [isDragging, setIsDragging] = useState(false)
-//   const [position, setPosition] = useState({
-//     left: initialStyle.left || '0px',
-//     top: initialStyle.top || '0px',
-//     right: initialStyle.right || 'auto'
-//   })
-//   const dragOffset = useRef({ x: 0, y: 0 })
 
-//   const drawClipped = useCallback((ctx, image, rect) => {
-//     if (!image || !image.naturalWidth || !image.naturalHeight) return
+// import React, { useRef, useEffect, useCallback } from 'react';
+// import { motion, useTransform, useMotionValue } from 'framer-motion';
 
-//     // Calculate aspect ratios
-//     const imageAspect = image.naturalWidth / image.naturalHeight
-//     const windowAspect = window.innerWidth / window.innerHeight
-    
-//     // Calculate how the image would be displayed to cover the entire window
-//     let displayWidth, displayHeight, displayX, displayY
-    
-//     if (imageAspect > windowAspect) {
-//       // Image is wider - fit to height, center horizontally
-//       displayHeight = window.innerHeight
-//       displayWidth = displayHeight * imageAspect
-//       displayX = (window.innerWidth - displayWidth) / 2
-//       displayY = 0
-//     } else {
-//       // Image is taller - fit to width, center vertically
-//       displayWidth = window.innerWidth
-//       displayHeight = displayWidth / imageAspect
-//       displayX = 0
-//       displayY = (window.innerHeight - displayHeight) / 2
-//     }
-    
-//     // Calculate the scale factor between image dimensions and display dimensions
-//     const scaleX = image.naturalWidth / displayWidth
-//     const scaleY = image.naturalHeight / displayHeight
-    
-//     // Calculate which portion of the image corresponds to the mask position
-//     const sourceX = (rect.left - displayX) * scaleX
-//     const sourceY = (rect.top - displayY) * scaleY
-//     const sourceWidth = rect.width * scaleX
-//     const sourceHeight = rect.height * scaleY
-    
-//     // Draw the corresponding portion of the image to the canvas
-//     ctx.drawImage(
-//       image,
-//       sourceX,
-//       sourceY,
-//       sourceWidth,
-//       sourceHeight,
-//       0,
-//       0,
-//       rect.width,
-//       rect.height
-//     )
-//   }, [])
+// const MaskBox = ({ image, config, mouseX, mouseY }) => {
+//   const canvasRef = useRef(null);
+//   const containerRef = useRef(null);
+
+//   // 1. Safety Fallback: Prevents "TypeError: can't access property get"
+//   // If the parent hasn't passed the MotionValue yet, we use a internal temporary one.
+//   const fallbackValue = useMotionValue(0);
+//   const mX = mouseX || fallbackValue;
+//   const mY = mouseY || fallbackValue;
+
+//   // 2. Custom Depth: We use the index or a random factor to make masks 
+//   // move at different speeds. This creates the "Parallax Layering" effect.
+//   const depth = config.depth || 40; 
+//   const parallaxX = useTransform(mX, [-0.5, 0.5], [-depth, depth]);
+//   const parallaxY = useTransform(mY, [-0.5, 0.5], [-depth, depth]);
 
 //   const draw = useCallback(() => {
-//     if (!canvasRef.current || !maskRef.current || !image) return
+//     if (!canvasRef.current || !containerRef.current || !image) return;
+//     const canvas = canvasRef.current;
+//     const ctx = canvas.getContext('2d');
+//     const rect = containerRef.current.getBoundingClientRect();
 
-//     const canvas = canvasRef.current
-//     const ctx = canvas.getContext('2d')
-//     const rect = maskRef.current.getBoundingClientRect()
+//     const dpr = window.devicePixelRatio || 1;
+//     canvas.width = rect.width * dpr;
+//     canvas.height = rect.height * dpr;
+//     ctx.scale(dpr, dpr);
 
-//     canvas.width = rect.width
-//     canvas.height = rect.height
-
-//     ctx.imageSmoothingEnabled = true
-//     ctx.imageSmoothingQuality = 'high'
-
-//     drawClipped(ctx, image, rect)
-//   }, [image, drawClipped])
+//     const imageAspect = image.naturalWidth / image.naturalHeight;
+//     const windowAspect = window.innerWidth / window.innerHeight;
+    
+//     let dW, dH, dX, dY;
+//     if (imageAspect > windowAspect) {
+//       dH = window.innerHeight; dW = dH * imageAspect;
+//       dX = (window.innerWidth - dW) / 2; dY = 0;
+//     } else {
+//       dW = window.innerWidth; dH = dW / imageAspect;
+//       dX = 0; dY = (window.innerHeight - dH) / 2;
+//     }
+    
+//     const sX = (rect.left - dX) * (image.naturalWidth / dW);
+//     const sY = (rect.top - dY) * (image.naturalHeight / dH);
+//     const sW = rect.width * (image.naturalWidth / dW);
+//     const sH = rect.height * (image.naturalHeight / dH);
+    
+//     ctx.drawImage(image, sX, sY, sW, sH, 0, 0, rect.width, rect.height);
+//   }, [image]);
 
 //   useEffect(() => {
-//     let animationId
-    
-//     const animate = () => {
-//       draw()
-//       animationId = requestAnimationFrame(animate)
-//     }
-    
-//     if (image) {
-//       animate()
-//     }
-    
-//     return () => {
-//       if (animationId) {
-//         cancelAnimationFrame(animationId)
-//       }
-//     }
-//   }, [draw, image])
-
-//   const handleMouseDown = (e) => {
-//     setIsDragging(true)
-//     const rect = maskRef.current.getBoundingClientRect()
-//     dragOffset.current = {
-//       x: e.clientX - rect.left,
-//       y: e.clientY - rect.top
-//     }
-//   }
-
-//   const handleMouseMove = useCallback((e) => {
-//     if (!isDragging) return
-    
-//     setPosition({
-//       left: `${e.clientX - dragOffset.current.x}px`,
-//       top: `${e.clientY - dragOffset.current.y}px`,
-//       right: 'auto'
-//     })
-//   }, [isDragging])
-
-//   const handleMouseUp = useCallback(() => {
-//     setIsDragging(false)
-//   }, [])
-
-//   useEffect(() => {
-//     if (isDragging) {
-//       document.addEventListener('mousemove', handleMouseMove)
-//       document.addEventListener('mouseup', handleMouseUp)
-      
-//       return () => {
-//         document.removeEventListener('mousemove', handleMouseMove)
-//         document.removeEventListener('mouseup', handleMouseUp)
-//       }
-//     }
-//   }, [isDragging, handleMouseMove, handleMouseUp])
-
-//   const maskStyle = {
-//     width: initialStyle.width,
-//     height: initialStyle.height,
-//     left: position.left,
-//     top: position.top,
-//     right: position.right !== 'auto' ? position.right : initialStyle.right,
-//     cursor: isDragging ? 'grabbing' : 'grab'
-//   }
+//     let frameId;
+//     const animate = () => { draw(); frameId = requestAnimationFrame(animate); };
+//     animate();
+//     return () => cancelAnimationFrame(frameId);
+//   }, [draw]);
 
 //   return (
-//     <div 
-//       ref={maskRef}
-//       className="mask-box fixed"
-//       style={maskStyle}
-//       onMouseDown={handleMouseDown}
+//     <motion.div
+//       ref={containerRef}
+//       initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
+//       animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+//       transition={{ 
+//         duration: 2, 
+//         ease: [0.16, 1, 0.3, 1], // Custom Awwwards-style cubic-bezier
+//         delay: Math.random() * 0.5 // Staggered entrance for a more organic feel
+//       }}
+//       className="fixed overflow-hidden bg-[#0a0a0a] group"
+//       style={{
+//         width: config.width, 
+//         height: config.height,
+//         top: config.top, 
+//         left: config.left,
+//         x: parallaxX, 
+//         y: parallaxY,
+//         border: '1px solid rgba(255, 255, 255, 0.05)',
+//         zIndex: Math.floor(depth), // Physically place it higher in stack
+//       }}
 //     >
-//       <canvas ref={canvasRef} />
-//     </div>
-//   )
-// }
+//       <canvas 
+//         ref={canvasRef} 
+//         className="w-full h-full opacity-40 group-hover:opacity-100 transition-all duration-1000 grayscale group-hover:grayscale-0" 
+//       />
+      
+//       {/* Precision UI Label */}
+//       <div className="absolute bottom-3 left-3 overflow-hidden">
+//         <motion.span 
+//           initial={{ y: "100%" }}
+//           animate={{ y: 0 }}
+//           transition={{ delay: 1, duration: 0.8 }}
+//           className="text-[8px] text-white/20 tracking-[0.5em] uppercase font-light block"
+//         >
+//           {config.label}
+//         </motion.span>
+//       </div>
+//     </motion.div>
+//   );
+// };
 
-// export default MaskBox
+// export default MaskBox;
 
 import React, { useRef, useEffect, useCallback } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useTransform, useMotionValue } from 'framer-motion';
 
-const MaskBox = ({ image, config }) => {
+const MaskBox = ({ image, config, mouseX, mouseY }) => {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
 
-  // Performance-optimized Drawing Logic
+  // Safety for useTransform (prevents crash if props are undefined)
+  const safeX = mouseX || useMotionValue(0);
+  const safeY = mouseY || useMotionValue(0);
+
+  // Depth control for parallax
+  const d = config.depth || 30;
+  const parallaxX = useTransform(safeX, [-0.5, 0.5], [-d, d]);
+  const parallaxY = useTransform(safeY, [-0.5, 0.5], [-d, d]);
+
   const draw = useCallback(() => {
     if (!canvasRef.current || !containerRef.current || !image) return;
-
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const rect = containerRef.current.getBoundingClientRect();
 
-    canvas.width = rect.width;
-    canvas.height = rect.height;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
 
-    // Aspect Ratio calculations (Your original logic is solid, keeping it for the "Portal" effect)
     const imageAspect = image.naturalWidth / image.naturalHeight;
     const windowAspect = window.innerWidth / window.innerHeight;
     
-    let displayWidth, displayHeight, displayX, displayY;
-    
+    let dW, dH, dX, dY;
     if (imageAspect > windowAspect) {
-      displayHeight = window.innerHeight;
-      displayWidth = displayHeight * imageAspect;
-      displayX = (window.innerWidth - displayWidth) / 2;
-      displayY = 0;
+      dH = window.innerHeight; dW = dH * imageAspect;
+      dX = (window.innerWidth - dW) / 2; dY = 0;
     } else {
-      displayWidth = window.innerWidth;
-      displayHeight = displayWidth / imageAspect;
-      displayX = 0;
-      displayY = (window.innerHeight - displayHeight) / 2;
+      dW = window.innerWidth; dH = dW / imageAspect;
+      dX = 0; dY = (window.innerHeight - dH) / 2;
     }
     
-    const scaleX = image.naturalWidth / displayWidth;
-    const scaleY = image.naturalHeight / displayHeight;
+    const sX = (rect.left - dX) * (image.naturalWidth / dW);
+    const sY = (rect.top - dY) * (image.naturalHeight / dH);
+    const sW = rect.width * (image.naturalWidth / dW);
+    const sH = rect.height * (image.naturalHeight / dH);
     
-    ctx.drawImage(
-      image,
-      (rect.left - displayX) * scaleX,
-      (rect.top - displayY) * scaleY,
-      rect.width * scaleX,
-      rect.height * scaleY,
-      0, 0, rect.width, rect.height
-    );
+    ctx.drawImage(image, sX, sY, sW, sH, 0, 0, rect.width, rect.height);
   }, [image]);
 
   useEffect(() => {
     let frameId;
-    const loop = () => {
-      draw();
-      frameId = requestAnimationFrame(loop);
-    };
+    const loop = () => { draw(); frameId = requestAnimationFrame(loop); };
     loop();
     return () => cancelAnimationFrame(frameId);
   }, [draw]);
@@ -214,42 +158,30 @@ const MaskBox = ({ image, config }) => {
   return (
     <motion.div
       ref={containerRef}
-      drag
-      dragMomentum={true}
-      initial={{ 
-        width: config.width, 
-        height: config.height, 
-        top: config.top, 
-        left: config.left,
-        opacity: 0,
-        scale: 0.9 
-      }}
-      animate={{ opacity: 1, scale: 1 }}
-      whileHover={{ scale: 1.02 }}
-      whileDrag={{ scale: 1.05, zIndex: 50 }}
+      initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
+      animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+      transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+      className="absolute overflow-hidden bg-[#080808] group" // ABSOLUTE IS KEY HERE
       style={{
-        position: 'fixed',
-        border: '1px solid rgba(56, 189, 248, 0.3)',
-        boxShadow: '0 0 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(56, 189, 248, 0.1)',
-        overflow: 'hidden',
-        background: '#000',
-        borderRadius: '4px'
+        width: config.width,
+        height: config.height,
+        top: config.top,
+        left: config.left,
+        x: parallaxX,
+        y: parallaxY,
+        border: '0.5px solid rgba(255, 255, 255, 0.1)',
+        zIndex: 10 + (config.depth || 0)
       }}
     >
-      {/* Portal Canvas */}
-      <canvas ref={canvasRef} className="block w-full h-full" />
-
-      {/* Cinematic HUD Overlay */}
-      <div className="absolute inset-0 pointer-events-none border-[1px] border-white/5">
-        <div className="absolute top-2 left-2 flex flex-col gap-1">
-          <span className="text-[8px] font-mono text-cyan-400 opacity-80 leading-none">
-            {config.label}
-          </span>
-          <div className="w-8 h-[1px] bg-cyan-400/50" />
-        </div>
-        <div className="absolute bottom-2 right-2">
-            <div className="w-2 h-2 border-r border-b border-cyan-400/50" />
-        </div>
+      <canvas 
+        ref={canvasRef} 
+        className="w-full h-full opacity-50 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-1000" 
+      />
+      
+      <div className="absolute top-3 left-3">
+        <span className="text-[7px] text-white/20 tracking-[0.5em] uppercase font-light">
+          {config.label}
+        </span>
       </div>
     </motion.div>
   );

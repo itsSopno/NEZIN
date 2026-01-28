@@ -1,113 +1,201 @@
-// import React, { useRef, useEffect, useState } from 'react'
-// import MaskBox from './components/MaskBox'
-// const App = () => {
-//   const imageRef = useRef(null)
-//   const [imageLoaded, setImageLoaded] = useState(false)
 
-//   const maskConfigs = [
-//     { width: '60vw', height: '35vw', top: '10vh', left: '10vw' },
-//     { width: '17vw', height: '9vw', top: '5vh', left: '5vw' },
-//     { width: '35vw', height: '19vw', top: '5vh', right: '5vw' },
-//     { width: '38vw', height: '22vw', top: '50vh', left: '5vw' }
-//   ]
+
+// import React, { useRef, useState, useEffect } from 'react';
+// import MaskBox from './components/MaskBox';
+// import { useMotionValue, useSpring } from 'framer-motion';
+
+// const App = () => {
+//   const imageRef = useRef(null);
+//   const [imageLoaded, setImageLoaded] = useState(false);
+//   const [isMobile, setIsMobile] = useState(false);
+
+//   // 1. Motion Values for smooth parallax
+//   const mouseX = useMotionValue(0);
+//   const mouseY = useMotionValue(0);
+
+//   const springConfig = { stiffness: 100, damping: 30 };
+//   const smoothX = useSpring(mouseX, springConfig);
+//   const smoothY = useSpring(mouseY, springConfig);
+
+//   // 2. The event handler MUST be on the main container
+//   const handleMouseMove = (e) => {
+//     mouseX.set(e.clientX / window.innerWidth - 0.5);
+//     mouseY.set(e.clientY / window.innerHeight - 0.5);
+//   };
 
 //   useEffect(() => {
-//     const image = imageRef.current
-//     if (image) {
-//       const handleLoad = () => {
-//         setImageLoaded(true)
-//       }
-      
-//       image.addEventListener('load', handleLoad)
-      
-//       return () => {
-//         image.removeEventListener('load', handleLoad)
-//       }
-//     }
-//   }, [])
+//     const checkMobile = () => setIsMobile(window.innerWidth < 768);
+//     checkMobile();
+//     window.addEventListener('resize', checkMobile);
+//     return () => window.removeEventListener('resize', checkMobile);
+//   }, []);
 
-//   return (
-//     <div className="hero h-screen w-full bg-black">
-//       <img 
+//   const maskConfigs = isMobile ? [
+//     { width: '85vw', height: '30vh', top: '12vh', left: '7.5vw', label: "01 / PRIMARY", depth: 10 },
+//     { width: '40vw', height: '20vh', top: '45vh', left: '7.5vw', label: "02 / AUX_A", depth: 20 },
+//     { width: '40vw', height: '20vh', top: '45vh', left: '52.5vw', label: "03 / AUX_B", depth: 25 },
+//     { width: '85vw', height: '20vh', top: '68vh', left: '7.5vw', label: "04 / LOGS", depth: 15 }
+//   ] : [
+//     { width: '32vw', height: '48vh', top: '15vh', left: '8vw', label: "01 / CORE_VIEW", depth: 20 },
+//     { width: '18vw', height: '22vh', top: '15vh', left: '42vw', label: "02 / ANALYTICS", depth: 40 },
+//     { width: '18vw', height: '22vh', top: '41vh', left: '42vw', label: "03 / SPECTRAL", depth: 30 },
+//     { width: '30vw', height: '12vh', top: '67vh', left: '42vw', label: "04 / TELEMETRY", depth: 50 },
+//     { width: '12vw', height: '64vh', top: '15vh', left: '75vw', label: "05 / NEURAL", depth: 60 },
+//     { width: '20vw', height: '6vh', top: '82vh', left: '8vw', label: "06 / STATUS", depth: 10 }
+//   ];
+
+// return (
+//   <>
+//  <main className="w-full bg-[#050505]">
+//   {/* HERO SECTION */}
+//   <div 
+//     onMouseMove={handleMouseMove} 
+//     className="relative h-screen w-full flex flex-col items-center justify-center cursor-none"
+//     /* Note: Removed overflow-hidden here to allow natural scroll flow */
+//   >
+ 
+//   <img 
 //         ref={imageRef}
 //         src="https://i.postimg.cc/MKjZDWrf/file-00000000fdc87206927f8b9b5ac66e3f.png"
-//         alt="Background"
 //         className="hidden"
+//         onLoad={() => setImageLoaded(true)}
 //         crossOrigin="anonymous"
 //       />
 
+    
+//       {!isMobile && (
+//         <div className="absolute inset-0 flex justify-between px-[8vw] pointer-events-none opacity-5">
+//           {[...Array(6)].map((_, i) => (
+//             <div key={i} className="w-[1px] h-full bg-white" />
+//           ))}
+//         </div>
+//       )}
+//     <div className="relative w-full h-full z-10">
 //       {imageLoaded && maskConfigs.map((config, index) => (
 //         <MaskBox 
-//           key={index}
-//           image={imageRef.current}
-//           initialStyle={config}
+//           key={index} 
+//           image={imageRef.current} 
+//           config={config} 
+//           mouseX={smoothX} 
+//           mouseY={smoothY} 
 //         />
 //       ))}
 //     </div>
-//   )
+
+//     {/* Footer - Keep it Absolute */}
+//     <div className="absolute bottom-6 w-full px-10 flex justify-between items-end pointer-events-none z-[70]">
+//        {/* ... Footer Content ... */}
+//     </div>
+//   </div>
+
+//   {/* WHITE SECTION */}
+//   <section className="relative w-full h-screen bg-white z-[100] flex items-center justify-center">
+//     <h1 className="text-black text-5xl font-light tracking-tighter">PREMIUM CONTENT</h1>
+//   </section>
+// </main>
+
+//     </>
+//   );
 // }
 
-// export default App
+// export default App;
 
-import React, { useRef, useEffect, useState } from 'react';
+
+ import React, { useRef, useState, useEffect } from 'react';
+import { useMotionValue, useSpring } from 'framer-motion';
 import MaskBox from './components/MaskBox';
 
 const App = () => {
   const imageRef = useRef(null);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // High-end cinematic layout
-const maskConfigs = [
-  // 1. The Focal Point (Large Hero)
-  { width: '40vw', height: '22vw', top: '15vh', left: '10vw', label: "SYSTEM_CORE_ALPHA" },
+  // 1. Smooth Mouse Physics
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springConfig = { stiffness: 100, damping: 30 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
 
-  // 2. Vertical Scanner (Tall & Slim)
-  { width: '12vw', height: '30vw', top: '10vh', left: '55vw', label: "BIO_METRIC_SCAN" },
+  const handleMouseMove = (e) => {
+    // Normalizing coordinates (-0.5 to 0.5)
+    mouseX.set(e.clientX / window.innerWidth - 0.5);
+    mouseY.set(e.clientY / window.innerHeight - 0.5);
+  };
 
-  // 3. Top Right Widget (Small Square)
-  { width: '18vw', height: '10vw', top: '10vh', left: '72vw', label: "AUX_PWR_02" },
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-  // 4. Bottom Left Support (Wide)
-  { width: '28vw', height: '16vw', top: '65vh', left: '5vw', label: "NAV_TELEMETRY" },
+  // 2. Premium Mask Layouts
+  const maskConfigs = isMobile ? [
+    { width: '85vw', height: '30vh', top: '12vh', left: '7.5vw', label: "01 / PRIMARY", depth: 10 },
+    { width: '40vw', height: '20vh', top: '45vh', left: '7.5vw', label: "02 / AUX_A", depth: 20 },
+    { width: '40vw', height: '20vh', top: '45vh', left: '52.5vw', label: "03 / AUX_B", depth: 25 }
+  ] : [
+    { width: '32vw', height: '48vh', top: '15vh', left: '8vw', label: "01 / CORE", depth: 15 },
+    { width: '18vw', height: '22vh', top: '15vh', left: '42vw', label: "02 / DATA", depth: 35 },
+    { width: '18vw', height: '22vh', top: '41vh', left: '42vw', label: "03 / SPECT", depth: 25 },
+    { width: '30vw', height: '12vh', top: '67vh', left: '42vw', label: "04 / TELEM", depth: 45 },
+    { width: '12vw', height: '64vh', top: '15vh', left: '75vw', label: "05 / NEUR", depth: 55 }
+  ];
 
-  // 5. Center-Right Secondary (Medium)
-  { width: '22vw', height: '14vw', top: '45vh', left: '68vw', label: "DATA_ENCRYPT" },
-
-  // 6. The "Hidden" Data Strip (Tiny/Long)
-  { width: '35vw', height: '6vw', top: '55vh', left: '32vw', label: "LOG_STREAM_VIRTUAL" },
-
-  // 7. Bottom Right Detail
-  { width: '15vw', height: '15vw', top: '70vh', left: '75vw', label: "SATELLITE_LINK" }
-];
   return (
-    <div className="relative h-screen w-full bg-[#020617] overflow-hidden cursor-crosshair">
-      {/* Hidden Source Image */}
-      <img 
-        ref={imageRef}
-        src="https://i.postimg.cc/MKjZDWrf/file-00000000fdc87206927f8b9b5ac66e3f.png"
-        alt="Source"
-        className="hidden"
-        onLoad={() => setImageLoaded(true)}
-        crossOrigin="anonymous"
-      />
+    <main className="w-full bg-[#050505]">
+      {/* --- HERO SECTION --- */}
+      <section 
+        onMouseMove={handleMouseMove}
+        className="relative h-screen w-full flex flex-col items-center justify-center cursor-none z-10 overflow-hidden"
+      >
+        {/* Grain Overlay */}
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-      {/* Atmospheric Background Grid */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none" 
-           style={{ backgroundImage: `radial-gradient(#1e293b 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
-
-      {imageLoaded && maskConfigs.map((config, index) => (
-        <MaskBox 
-          key={index}
-          image={imageRef.current}
-          config={config}
+        {/* Hidden Source Image */}
+        <img 
+          ref={imageRef}
+          src="https://i.postimg.cc/MKjZDWrf/file-00000000fdc87206927f8b9b5ac66e3f.png"
+          className="hidden"
+          onLoad={() => setImageLoaded(true)}
+          crossOrigin="anonymous"
         />
-      ))}
 
-      {/* Fixed UI Overlay */}
-      <div className="absolute bottom-8 left-8 text-[#38bdf8] font-mono text-[10px] tracking-[4px] uppercase opacity-50">
-        Status: Systems Nominal // Portals Active
-      </div>
-    </div>
+        {/* Grid Guides */}
+        {!isMobile && (
+          <div className="absolute inset-0 flex justify-between px-[8vw] pointer-events-none opacity-5 z-0">
+            {[...Array(6)].map((_, i) => <div key={i} className="w-[1px] h-full bg-white" />)}
+          </div>
+        )}
+
+        {/* Portals Container */}
+        <div className="relative w-full h-full z-10">
+          {imageLoaded && maskConfigs.map((config, index) => (
+            <MaskBox 
+              key={`${isMobile}-${index}`} 
+              image={imageRef.current} 
+              config={config} 
+              mouseX={smoothX} 
+              mouseY={smoothY} 
+            />
+          ))}
+        </div>
+
+        {/* Hero Footer */}
+        <div className="absolute bottom-6 w-full px-10 flex justify-between items-end pointer-events-none z-[60]">
+          <div className="text-[9px] text-white/20 tracking-[0.5em] uppercase font-mono">
+            Nexus Protocol <br /> <span className="text-white/40">2026_EST</span>
+          </div>
+          <div className="text-[9px] text-white/20 tracking-[0.5em] uppercase font-mono">
+            Secure Entry Only
+          </div>
+        </div>
+      </section>
+
+      {/* --- CONTENT SECTION --- */}
+    
+    </main>
   );
 };
 

@@ -28,7 +28,7 @@ const StoryMain = () => {
       {/* Parallax Grid */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
         <motion.div style={{ y: y1 }} className="md:col-span-5 aspect-[3/4] overflow-hidden grayscale">
-          <img src="https://i.postimg.cc/Wz8vpwTZ/171e99fe35379cc59a11bba55e44d3f2.jpg" alt="Process" className="object-cover w-full h-full opacity-70" />
+          <img src="https://i.postimg.cc/zf8Lk0L4/9d617fb1fc83bb676f5a49d37151e5b6.jpg" alt="Process" className="object-cover w-full h-full opacity-70" />
         </motion.div>
 
         <div className="md:col-span-6 md:col-start-7">
@@ -42,7 +42,7 @@ const StoryMain = () => {
         </div>
 
         <motion.div style={{ y: y2 }} className="hidden md:block md:col-span-3 md:col-start-9 aspect-square overflow-hidden mt-[-20%] grayscale contrast-125 border border-white/10">
-          <img src="https://i.postimg.cc/0Q9X5RQY/8d210775fdca9ddefce7bcf436b1bc2d.jpg" alt="Detail" className="object-cover w-full h-full" />
+          <img src="https://i.postimg.cc/15S8Gy8n/4961c33bfd18dacb2c055d25ea31faa4.jpg" alt="Detail" className="object-cover w-full h-full" />
         </motion.div>
       </div>
     </div>

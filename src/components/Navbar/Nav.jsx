@@ -54,12 +54,11 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import useRole from '../Hooks/useRole';
-import UseAuth from '../Hooks/UseAuth';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-   // ✅ Correct usage - destructure from object
- const [isOwner , loading] = useRole()
+  const { role, loading } = useRole(); // ✅ Correct usage - destructure from object
+  
   const menuItems = [
     {name : "Story", path :"/story"},
     { name: 'Login', path: '/login' },
@@ -81,19 +80,19 @@ const Navbar = () => {
               {item.name}
             </Link>
           ))}
-          {!loading && isOwner === "owner" && (
+          {!loading && role === "owner" && (
             <Link to="/dashboard" className="hover:text-white transition-colors cursor-pointer">
               Dashboard
             </Link>
           )}
          
-          <li>
-            <a>Collection</a>
-            <ul className="p-2">
-              <li><Link to="/men">FOR MEN</Link></li>
-              <li><Link to="/women">FOR WOMEN</Link></li>
-            </ul>
-          </li>
+          <div className="relative group">
+            <span className="cursor-pointer">Collection</span>
+            <div className="absolute top-full left-0 bg-black/90 backdrop-blur-sm border border-white/10 rounded p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <Link to="/men" className="block px-4 py-2 hover:text-white transition-colors">FOR MEN</Link>
+              <Link to="/women" className="block px-4 py-2 hover:text-white transition-colors">FOR WOMEN</Link>
+            </div>
+          </div>
         </div>
 
         {/* Mobile Toggle Button - Forced to stay on top */}
@@ -141,15 +140,23 @@ const Navbar = () => {
               </motion.div>
             ))}
            
-            <li>
-              <details>
-                <summary className='text-white'>Collection</summary>
-                <ul className="p-2 bg-base-100 w-40 z-1">
-                  <Link className='text-white' to="/men"><a>FOR MEN</a></Link>
-                  <Link className='text-white' to="/women"><a>FOR WOMEN</a></Link>
-                </ul>
-              </details>
-            </li>
+            <div className="text-center">
+              <p className="text-white text-2xl mb-4">Collection</p>
+              <Link 
+                to="/men" 
+                onClick={() => setIsOpen(false)}
+                className="block text-white text-xl mb-2 hover:italic transition-all"
+              >
+                FOR MEN
+              </Link>
+              <Link 
+                to="/women" 
+                onClick={() => setIsOpen(false)}
+                className="block text-white text-xl hover:italic transition-all"
+              >
+                FOR WOMEN
+              </Link>
+            </div>
             
             {/* Branding in Menu */}
             <div className="absolute bottom-10 text-[8px] text-white/20 tracking-[0.5em] uppercase">

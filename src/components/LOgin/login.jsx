@@ -1,12 +1,30 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import UseAuth from '../Hooks/UseAuth';
+import toast from 'react-hot-toast';
+import { saveOrUpdateUser } from '../../utility';
 const Login = () => {
-  // Logic for Google Login (To be connected to your Firebase)
-  const handleGoogleLogin = () => {
-    console.log("Firebase Google Auth Triggered");
-    // your firebase logic here
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { signInWithGoogle } = UseAuth(); // Correct usage - call the hook and destructure
+  const from = location.state?.from?.pathname || '/';
+  
+  // Logic for Google Login
+  const handleGoogleLogin = async() => {
+    try {
+      const { user } = await signInWithGoogle();
+      // TODO: Uncomment after implementing saveOrUpdateUser function
+      await saveOrUpdateUser({
+        name: user?.displayName,
+        email: user?.email,
+        image: user?.photoURL,
+      });
+      navigate(from, { replace: true });
+      toast.success("Signup Successful");
+    } catch (err) {
+      toast.error(err?.message);
+    }
   };
 
   return (

@@ -1,88 +1,64 @@
-import { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
-import UseAuth from './UseAuth';
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import UseAuth from "./UseAuth";
 
 const useRole = () => {
-  const [role, setRole] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const { user } = UseAuth();
+    const { user } = UseAuth();
+    
+    // Only fetch role if user is authenticated
+    const { data: roleData, isLoading, error } = useQuery({
+        queryKey: ['userRole', user?.email],
+        queryFn: async () => {
+            if (!user?.email) return null;
+            
+            try {
+                // Try to fetch user-specific role first
+                const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/role/${user.email}`);
+                return res.data;
+            } catch (err) {
+                // If specific endpoint fails, try the general customer endpoint
+                if (err.response?.status === 404) {
+                    const res = await axios.get(`${import.meta.env.VITE_API_URL}/Customer`);
+                    // Find user by email or return first user as fallback
+                    const userData = res.data.find(u => u.email === user.email) || res.data[0];
+                    return userData;
+                }
+                throw err;
+            }
+        },
+        enabled: !!user?.email, // Only run query if user email exists
+        staleTime: 5 * 60 * 1000, // 5 minutes
+        retry: 1,
+    });
 
-  const fetchUserRole = useCallback(async () => {
-    if (!user?.email) {
-      setRole(null);
-      setLoading(false);
-      return;
-    }
+    const role = roleData?.role || 'user'; // Default to 'user' if no role found
 
-    try {
-      setLoading(true);
-      setError(null);
-      
-      // শুধুমাত্র Customer রাউট থেকে ডাটা আনা হচ্ছে
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/Customer`
-      );
-      
-      const userRole = response.data?.role || 'user';
-      setRole(userRole.toLowerCase()); 
-    } catch (err) {
-      console.error('Error fetching role:', err);
-      setError(err.response?.data?.message || 'Failed to fetch role');
-      setRole('user'); 
-    } finally {
-      setLoading(false);
-    }
-  }, [user?.email]);
-
-  useEffect(() => {
-    fetchUserRole();
-  }, [fetchUserRole]);
-
-  // Update Function - এখন সরাসরি Customer রাউটে হিট করবে
-  const updateRole = async (newRole) => {
-    if (!user?.email) return false;
-
-    try {
-      setLoading(true);
-      // এখানেও Customer/${user.email} ব্যবহার করা হয়েছে যাতে ব্যাকএন্ড বুঝতে পারে কার রোল আপডেট হচ্ছে
-      const response = await axios.put(
-        `${import.meta.env.VITE_API_URL}/Customer/${user.email}`,
-        {
-          role: newRole, // বডিতে শুধু নতুন রোল পাঠানো হচ্ছে
+    return {
+        role,
+        loading: isLoading,
+        error,
+        isOwner: role === 'owner',
+        isAdmin: role === 'admin', 
+        isModerator: role === 'moderator',
+        isUser: role === 'user',
+        isPremium: role === 'premium',
+        user: roleData, // Full user data
+        
+        // Helper function to update role (if needed)
+        updateRole: async (newRole) => {
+            if (!user?.email) return false;
+            try {
+                await axios.put(`${import.meta.env.VITE_API_URL}/api/users/role`, {
+                    email: user.email,
+                    role: newRole,
+                });
+                return true;
+            } catch (err) {
+                console.error('Error updating role:', err);
+                return false;
+            }
         }
-      );
-
-      if (response.data) {
-        setRole(newRole.toLowerCase());
-        return true;
-      }
-    } catch (err) {
-      console.error('Error updating user role:', err);
-      setError(err.response?.data?.message || 'Failed to update user role');
-      return false;
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Helper variables (Boolean)
-  const isOwner = role === "owner";
-  const isModerator = role === 'moderator';
-  const isUser = role === 'user';
-  const isPremium = role === 'premium';
-
-  return {
-    role,
-    loading,
-    error,
-    updateRole,
-    isOwner, 
-    isModerator,
-    isUser,
-    isPremium,
-    refreshRole: fetchUserRole
-  };
+    };
 };
 
 export default useRole;

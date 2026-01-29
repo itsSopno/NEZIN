@@ -42,7 +42,7 @@ const Privacy = () => {
                     <line x1="20" y1="20" x2="80" y2="80" />
                     <line x1="80" y1="20" x2="20" y2="80" />
                 </svg> */}
-                <img src="https://i.postimg.cc/DzSr97ds/affe16d42c0b45f55d0a2e5a66d48fe8.jpg" alt="Tech Drawing" className="object-contain w-full h-full opacity-40 grayscale" />   
+                <img src="https://i.postimg.cc/Bnmz4QWf/da859ef9c5282f8384126c25fca8273f.jpg" alt="Tech Drawing" className="object-contain w-full h-full opacity-40 grayscale" />   
             </motion.div>
 
             {/* Scanning Line Animation */}

@@ -127,14 +127,14 @@ const AestheticGrid = () => {
       y: y2 
     },
     { 
-      src: "https://i.postimg.cc/wjWxFMcy/711f85a45482a9483eb6c9da16248033.jpg", 
+      src: "https://i.postimg.cc/jS3xWTVw/ead817742145abdd0295da4a25cbeaf0.jpg", 
       label: "VOID_GEOMETRY", 
       meaning: "ARCHITECTURE OF SILENCE.", 
       pos: "col-span-4", 
       y: y3 
     },
     { 
-      src: "https://i.postimg.cc/jSBmsrR9/75a16b4ea124aee689b4a134087ec747.jpg", 
+      src: "https://i.postimg.cc/3r0nVFJW/002fd0af4d0a8d1b5ab8142df4ccfc8c.jpg", 
       label: "HALO_INITIAL", 
       meaning: "THE FUTURE IS ANCESTRAL.", 
       pos: "col-span-8 mt-[-15%]", 

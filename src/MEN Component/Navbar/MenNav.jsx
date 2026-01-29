@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const CollectionNav = () => {
   const categories = [
-    { name: "Outerwear", path: "/outerwear" },
+    { name: "Outerwear", path: "/men" },
     { name: "Technical Tops", path: "/technical-tops" },
     { name: "Trousers", path: "/trousers" },
-    { name: "Aesthetic", path: "/aesthetic" },
+    { name: "Aesthetic", path: "aesthetic" },
     { name: "Home", path: "/" },
   ];
 

@@ -97,7 +97,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Story = () => {
   const containerRef = useRef(null);

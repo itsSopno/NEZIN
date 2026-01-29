@@ -29,7 +29,7 @@ const Privacy = () => {
   return (
     <div ref={containerRef} className="relative bg-[#050505] text-white selection:bg-white selection:text-black">
       {/* 1. THE STICKY BLUEPRINT (LEFT SIDE) */}
-      <div className="sticky top-0 h-screen w-full md:w-1/2 flex flex-col items-center justify-center pointer-events-none p-10 hidden md:flex">
+      <div className="sticky top-0 h-screen w-full md:w-1/2 hidden md:flex flex-col items-center justify-center pointer-events-none p-10">
         <div className="relative w-full h-[70vh] border-l border-white/5 flex items-center justify-center">
             {/* Minimalist Tech Drawing of a Shirt/Jacket */}
             <motion.div 

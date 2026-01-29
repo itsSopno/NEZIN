@@ -52,7 +52,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -138,8 +138,8 @@ const Navbar = () => {
         <details>
           <summary className='text-white'>Collection</summary>
           <ul className="p-2 bg-base-100 w-40 z-1">
-            <li className='text-white'><a>FOR MEN</a></li>
-            <li className='text-white'><a>FOR WOMEN</a></li>
+            <Link className='text-white' to="/men"><a>FOR MEN</a></Link>
+            <Link className='text-white' to="/women"><a>FOR WOMEN</a></Link>
           </ul>
         </details>
       </li>

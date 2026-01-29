@@ -124,7 +124,7 @@ const Navbar = () => {
                             {user.displayName || 'User'}
                           </p>
                           <p className="text-white/60 text-xs">
-                            {user.email}
+                          
                           </p>
                           {role && (
                             <span className="inline-block mt-1 px-2 py-0.5 bg-white/10 rounded text-xs text-white/80 capitalize">
@@ -147,7 +147,7 @@ const Navbar = () => {
                         </svg>
                         <span className="text-xs uppercase tracking-wider">Profile</span>
                       </Link>
-                      
+{/*                       
                       <Link 
                         to="/settings" 
                         onClick={() => setIsProfileOpen(false)}
@@ -158,7 +158,7 @@ const Navbar = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                         <span className="text-xs uppercase tracking-wider">Settings</span>
-                      </Link>
+                      </Link> */}
 
                       <button 
                         onClick={openLogoutConfirm}
@@ -258,6 +258,9 @@ const Navbar = () => {
                 >
                   {item.name}
                 </Link>
+                <Link to="/login" className="hover:text-white transition-colors cursor-pointer">
+              Login
+            </Link>
               </motion.div>
             ))}
            

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Preloader = ({ onComplete }) => {
   const [index, setIndex] = useState(0);
-  const words = ["NEZIN", "We don't design clothes", "We design confidence", "X STUDIO SINNERS", "EST 2026"];
+  const words = ["NEZIN", "X", "STUDIO SINNERS", "EST 2026"];
 
   useEffect(() => {
     if (index === words.length) {
@@ -12,7 +12,7 @@ const Preloader = ({ onComplete }) => {
     }
     const timer = setTimeout(() => {
       setIndex(index + 1);
-    }, 1499); // Fast, rhythmic sequence
+    }, 1600); // Fast, rhythmic sequence
     return () => clearTimeout(timer);
   }, [index, onComplete]);
 

@@ -59,7 +59,7 @@ import UseAuth from '../Hooks/UseAuth';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
    // ✅ Correct usage - destructure from object
-  const [user] = UseAuth
+ const [isOwner , loading] = useRole()
   const menuItems = [
     {name : "Story", path :"/story"},
     { name: 'Login', path: '/login' },
@@ -81,7 +81,7 @@ const Navbar = () => {
               {item.name}
             </Link>
           ))}
-          {user.role === "owner" && (
+          {!loading && isOwner === "owner" && (
             <Link to="/dashboard" className="hover:text-white transition-colors cursor-pointer">
               Dashboard
             </Link>

@@ -258,9 +258,7 @@ const Navbar = () => {
                 >
                   {item.name}
                 </Link>
-                <Link to="/login" className="hover:text-white transition-colors cursor-pointer">
-              Login
-            </Link>
+              
               </motion.div>
             ))}
            
@@ -285,7 +283,24 @@ const Navbar = () => {
                 className="block text-white text-xl hover:italic transition-all"
               >
                 FOR WOMEN
-              </Link>
+            </Link>
+             {user ? (
+              <></>
+            ) :(
+              <>
+ <Link to="/login" className="text-white transition-colors cursor-pointer">
+              Login
+            </Link>
+            </>
+            )} 
+             {!loading && role === "owner" && (
+            <Link to="/dashboard" className="hover:text-white transition-colors cursor-pointer">
+              Dashboard
+            </Link>
+          )}
+                {/* <Link to="/login" className="text-white transition-colors cursor-pointer">
+              Login
+            </Link> */}
             </motion.div>
 
             {/* Logout Button for Mobile */}

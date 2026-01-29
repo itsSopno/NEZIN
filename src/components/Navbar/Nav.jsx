@@ -79,6 +79,13 @@ const Navbar = () => {
               {item.name}
             </Link>
           ))}
+           <li>
+          <a>Collection</a>
+          <ul className="p-2">
+            <li><Link to="/men">FOR MEN</Link></li>
+            <li><Link to="/women">FOR WOMEN</Link></li>
+          </ul>
+        </li>
         </div>
 
         {/* Mobile Toggle Button - Forced to stay on top */}
@@ -123,12 +130,23 @@ const Navbar = () => {
                 >
                   {item.name}
                 </Link>
+           
               </motion.div>
             ))}
-            
+           
+                 <li>
+        <details>
+          <summary className='text-white'>Collection</summary>
+          <ul className="p-2 bg-base-100 w-40 z-1">
+            <li className='text-white'><a>FOR MEN</a></li>
+            <li className='text-white'><a>FOR WOMEN</a></li>
+          </ul>
+        </details>
+      </li>
             {/* Branding in Menu */}
             <div className="absolute bottom-10 text-[8px] text-white/20 tracking-[0.5em] uppercase">
-              Nezin Protocol © 2026
+              <h1>Nezin Protocol © 2026</h1>
+              
             </div>
           </motion.div>
         )}

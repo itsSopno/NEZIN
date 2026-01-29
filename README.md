@@ -1,2 +1,3 @@
-![Dashboard Screenshot](nezin-banner/nezin.png)
+![Dashboard Screenshot](nezin banner/nezin.png)
+
 

@@ -53,15 +53,17 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import useRole from '../Hooks/useRole';
+import UseAuth from '../Hooks/UseAuth';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+   // ✅ Correct usage - destructure from object
+  const [user] = UseAuth
   const menuItems = [
     {name : "Story", path :"/story"},
     { name: 'Login', path: '/login' },
     { name: 'Contact', path: '/Contact' },
-    { name: 'Dashboard', path: '/dashboard' },
   ];
 
   return (
@@ -79,13 +81,19 @@ const Navbar = () => {
               {item.name}
             </Link>
           ))}
-           <li>
-          <a>Collection</a>
-          <ul className="p-2">
-            <li><Link to="/men">FOR MEN</Link></li>
-            <li><Link to="/women">FOR WOMEN</Link></li>
-          </ul>
-        </li>
+          {user.role === "owner" && (
+            <Link to="/dashboard" className="hover:text-white transition-colors cursor-pointer">
+              Dashboard
+            </Link>
+          )}
+         
+          <li>
+            <a>Collection</a>
+            <ul className="p-2">
+              <li><Link to="/men">FOR MEN</Link></li>
+              <li><Link to="/women">FOR WOMEN</Link></li>
+            </ul>
+          </li>
         </div>
 
         {/* Mobile Toggle Button - Forced to stay on top */}
@@ -130,23 +138,22 @@ const Navbar = () => {
                 >
                   {item.name}
                 </Link>
-           
               </motion.div>
             ))}
            
-                 <li>
-        <details>
-          <summary className='text-white'>Collection</summary>
-          <ul className="p-2 bg-base-100 w-40 z-1">
-            <Link className='text-white' to="/men"><a>FOR MEN</a></Link>
-            <Link className='text-white' to="/women"><a>FOR WOMEN</a></Link>
-          </ul>
-        </details>
-      </li>
+            <li>
+              <details>
+                <summary className='text-white'>Collection</summary>
+                <ul className="p-2 bg-base-100 w-40 z-1">
+                  <Link className='text-white' to="/men"><a>FOR MEN</a></Link>
+                  <Link className='text-white' to="/women"><a>FOR WOMEN</a></Link>
+                </ul>
+              </details>
+            </li>
+            
             {/* Branding in Menu */}
             <div className="absolute bottom-10 text-[8px] text-white/20 tracking-[0.5em] uppercase">
               <h1>Nezin Protocol © 2026</h1>
-              
             </div>
           </motion.div>
         )}

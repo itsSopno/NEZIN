@@ -1,0 +1,95 @@
+{
+  "collection_name": "NEZIN_WINTER_ARCHIVE_26",
+  "season": "FALL/WINTER",
+  "for" : "MEN",
+  "products": [
+    {
+      "id": "NZ-W26-OUT-01",
+      "name": "Sherpa 'MERK' Tactical Fleece",
+      "category": "Outerwear",
+      "price": 245,
+      "stock": 3,
+      "status": "LOW_STOCK",
+      "description": "High-pile sherpa fleece in cobalt blue with industrial patches and orange 'MERK' embroidery. Includes reinforced tactical sleeve paneling.",
+      "image_ref": "https://i.postimg.cc/595wtTFT/8d50138212f45f480377274d8038f2a3.jpg",
+      "tags": ["Sherpa", "Tactical", "Limited"]
+    },
+    {
+      "id": "NZ-W26-TRS-02",
+      "name": "Geometric Paneled Trackpants",
+      "category": "Trousers",
+      "price": 160,
+      "stock": 4,
+      "status": "LOW_STOCK",
+      "description": "Cream and navy tech-fabric with sharp geometric contrast panels and a traditional maze-pattern motif on the side.",
+      "image_ref": "https://i.postimg.cc/C5JB4yGQ/78495654f2cbbf933ec1e72755d440b6.jpg",
+      "tags": ["Modular", "Techwear"]
+    },
+    {
+      "id": "NZ-W26-KNT-03",
+      "name": "Tiger Tapestry Quarter-Zip",
+      "category": "Aesthetic",
+      "price": 210,
+      "stock": 3,
+      "status": "LOW_STOCK",
+      "description": "Heavyweight jacquard knit featuring a forest green floral landscape and a prowling tiger motif. Finished with a vintage quarter-button collar.",
+      "image_ref": "https://i.postimg.cc/qRTNVBQQ/1b876acd741e2c0078b9a64d1f716ac0.jpg",
+      "tags": ["Jacquard", "Artisanal"]
+    },
+    {
+      "id": "NZ-W26-TRS-04",
+      "name": "Corduroy Paisley Stripe Joggers",
+      "category": "Trousers",
+      "price": 145,
+      "stock": 5,
+      "status": "AVAILABLE",
+      "description": "Premium wide-wale corduroy in charcoal grey, featuring a vertical monochrome paisley side-stripe for an elevated street silhouette.",
+      "image_ref": "https://i.postimg.cc/05J9d1fR/8b80a8458535518ba0ec3fe732e02c9f.jpg",
+      "tags": ["Corduroy", "Paisley"]
+    },
+    {
+      "id": "NZ-W26-OUT-05",
+      "name": "Worker Jacket with Cord Collar",
+      "category": "Outerwear",
+      "price": 280,
+      "stock": 3,
+      "status": "LOW_STOCK",
+      "description": "Rugged canvas worker jacket in forest green with a contrasting brown corduroy collar and a heritage plaid interior lining.",
+      "image_ref": "https://i.postimg.cc/5tRMLsQW/1a5a34cc33ae2db8091c4d5058da1c83.jpg",
+      "tags": ["Heritage", "Workwear"]
+    },
+    {
+      "id": "NZ-W26-HOD-06",
+      "name": "Calligraphy Stamp Hoodie",
+      "category": "Aesthetic",
+      "price": 175,
+      "stock": 4,
+      "status": "LOW_STOCK",
+      "description": "Off-white oversized hoodie featuring a burgundy postal stamp graphic with intricate Persian calligraphy and floral details.",
+      "image_ref": "https://i.postimg.cc/cLDqGFmc/0503b1dfb4cba4c44b56b3ef5cfba6bc.jpg",
+      "tags": ["Graphic", "Oversized"]
+    },
+    {
+      "id": "NZ-W26-OUT-07",
+      "name": "Patchwork Pattern Denim Jacket",
+      "category": "Outerwear",
+      "price": 225,
+      "stock": 3,
+      "status": "LOW_STOCK",
+      "description": "A cream-based denim jacket constructed with intricate patchwork panels of paisley, geometric, and floral block prints.",
+      "image_ref": "https://i.postimg.cc/N0ynqBLH/dfb2d8a71ed9ee2daea046c74b044712.jpg",
+      "tags": ["Patchwork", "Block Print"]
+    },
+    {
+      "id": "NZ-W26-TRS-08",
+      "name": "Earth-Tone Floral Embroidery Joggers",
+      "category": "Trousers",
+      "price": 190,
+      "stock": 3,
+      "status": "LOW_STOCK",
+      "description": "Terracotta heavy cotton joggers featuring a thick vertical stripe of high-density floral embroidery in gold and cream tones.",
+      "image_ref": "https://i.postimg.cc/7PXnVjYj/881abc2bb795cfa36561b58a0f30bec4.jpg",
+      "tags": ["Embroidery", "Limited"]
+    }
+  ]
+}

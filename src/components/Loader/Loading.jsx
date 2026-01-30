@@ -77,7 +77,7 @@ const Preloader = ({ onComplete }) => {
             animate="animate"
             exit="exit"
             transition={{ duration: 0.4, ease: [0.215, 0.61, 0.355, 1] }}
-            className="text-white text-2xl md:text-4xl font-light tracking-[0.8em] md:tracking-[1em] uppercase px-4 text-center"
+            className="text-white crenzo-font text-2xl md:text-4xl font-light tracking-[0.8em] md:tracking-[1em] uppercase px-4 text-center"
           >
             {words[index]}
           </motion.h1>

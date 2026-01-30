@@ -125,7 +125,7 @@ const Story = () => {
             scale: useTransform(scrollYProgress, [0, 0.2], [1, 12]), // Reduced scale for mobile safety
             opacity: useTransform(scrollYProgress, [0.1, 0.2], [1, 0]) 
           }}
-          className="text-[18vw] md:text-[12vw] font-black tracking-tighter uppercase z-20"
+          className="text-[18vw] md:text-[12vw] crenzo-font tracking-tighter uppercase z-20"
         >
           NEZIN
         </motion.h2>
@@ -172,7 +172,7 @@ const Story = () => {
       <div className="h-screen w-full flex items-center overflow-hidden">
         <motion.div 
           style={{ x: useTransform(scrollYProgress, [0.6, 1], ["50%", "-150%"]) }}
-          className="whitespace-nowrap text-[35vw] md:text-[25vw] font-black uppercase tracking-tighter opacity-10 italic"
+          className="whitespace-nowrap text-[35vw] md:text-[25vw] crenzo-font uppercase tracking-tighter opacity-10 italic"
         >
           Craftsmanship — Quality — Timeless — Luxury —
         </motion.div>

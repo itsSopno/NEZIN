@@ -8,3 +8,16 @@ canvas{
   width: 100%;
   display: block;
 }
+@font-face {
+  font-family: 'CRENZO';
+  src: url('./Font/CRENZO.otf') format('opentype'),
+       url('./Font/CRENZO.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Usage */
+.crenzo-font {
+  font-family: 'CRENZO', sans-serif;
+}

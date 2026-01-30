@@ -12,6 +12,7 @@ import MenGallery from "../MEN Component/Aesthetic/Aesthetic";
 import MenCollection from "../MEN Component/MenCollection/MenCollection";
 import ProductDetail from "../MEN Component/Winter Detail/WinterDetail";
 import ErrorBoundary from "../components/ErrorBoundary";
+import PaymentExample from "../components/Payment/PaymentExample";
 
 const Router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const Router = createBrowserRouter([
       {
         path: "/story",
         element: <StoryMain />
+      },
+      {
+        path: "/payment-demo",
+        element: <PaymentExample />
       },
       {
         path: "/profile",
@@ -59,6 +64,15 @@ const Router = createBrowserRouter([
           <div className="text-center">
             <h1 className="text-4xl font-light mb-4">Dashboard</h1>
             <p className="text-white/60">Dashboard coming soon...</p>
+          </div>
+        </div>
+      },
+      {
+        path: "/orders",
+        element: <div className="min-h-screen bg-black text-white flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl font-light mb-4">Your Orders</h1>
+            <p className="text-white/60">Orders page coming soon...</p>
           </div>
         </div>
       }

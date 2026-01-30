@@ -17,7 +17,7 @@ const MenCollection = () => {
   
   useEffect(() => {
     // Tomar production URL check koro, local thakle localhost:5000
-    axios.get("http://localhost:5000/men")
+    axios.get("https://server-1-1-6g3a.onrender.com/men")
       .then(res => setCollections(res.data))
       .catch(err => console.error(err));
   }, []);

@@ -29,7 +29,7 @@ const MenMain = () => {
       <div className="relative h-[50vh] md:h-[70vh] w-full overflow-hidden flex items-center justify-center">
         {/* Background Image */}
         <img 
-          src="https://i.postimg.cc/TY8Wwrjy/b2fe53df6568b5c28fcb60f18ba5cae0.jpg" 
+          src="https://i.postimg.cc/vTgK48XZ/itl-cat-banner-wallpaper-2964125.png" 
           alt="Men's Banner" 
           className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-[2000ms] ease-out"
         />

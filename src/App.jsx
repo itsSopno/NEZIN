@@ -157,6 +157,7 @@ const App = () => {
         <img 
           ref={imageRef}
           src="https://i.postimg.cc/MKjZDWrf/file-00000000fdc87206927f8b9b5ac66e3f.png"
+     
           className="hidden"
           onLoad={() => setImageLoaded(true)}
           crossOrigin="anonymous"

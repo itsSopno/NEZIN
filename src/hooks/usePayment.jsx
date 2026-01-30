@@ -181,7 +181,7 @@ const usePayment = () => {
 
       // Step 1: Post customer purchase data
       const customerDataResponse = await axios.post(
-        'https://server-1-1-6g3a.onrender.com/Cusdata',
+        'https://server-1-1-6g3a.onrender.com/CusData',
         purchaseData,
         {
           headers: {

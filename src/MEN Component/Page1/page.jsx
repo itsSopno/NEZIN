@@ -97,7 +97,7 @@ const Hero1 = () => {
     <section className="relative w-full min-h-screen bg-[#f5f5f7] overflow-hidden flex items-center justify-center py-20 md:py-0">
       {/* 1. Background Watermark (Subtle) */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <h2 className="text-[30vw] md:text-[25vw] font-black text-black/[0.03] tracking-tighter uppercase select-none">
+        <h2 className="text-[30vw]crenzo-font  md:text-[25vw] font-black text-black/[0.03] tracking-tighter uppercase select-none">
           Masculine
         </h2>
       </div>

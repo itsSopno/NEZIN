@@ -110,7 +110,7 @@ const ModelShowcase = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-left"
         >
-          <h2 className="text-white text-[15vw] md:text-[8vw] font-black leading-[0.8] tracking-tighter uppercase">
+          <h2 className="text-white crenzo-font text-[15vw] md:text-[8vw] font-black leading-[0.8] tracking-tighter uppercase">
             FORM <br /> 
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white/40 to-white/10 italic font-serif font-light">
               DECODED

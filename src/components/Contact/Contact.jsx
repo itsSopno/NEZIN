@@ -48,7 +48,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-8xl font-light tracking-tighter leading-none mb-8">
+            <h1 className="text-5xl md:text-8xl crenzo-font font-light tracking-tighter leading-none mb-8">
               Initiate <br /> Dialogue.
             </h1>
             <p className="max-w-md text-white/50 text-sm leading-relaxed mb-12 tracking-wide">

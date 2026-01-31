@@ -22,7 +22,7 @@ const Footer = () => {
         {/* 2. Top Grid Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-24">
           <div className="col-span-2">
-            <h2 className="text-3xl md:text-3xl crenzo-font font-light tracking-tighter mb-6 max-w-sm">
+            <h2 className="text-2xl md:text-2xl crenzo-font font-light tracking-tighter mb-6 max-w-sm">
               Defining the interface of modern apparel.
             </h2>
             <Link to="/contact" className="group flex items-center gap-4 text-[10px] tracking-[0.3em] uppercase text-white/40 hover:text-white transition-colors">

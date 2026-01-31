@@ -32,7 +32,7 @@ const StoryMain = () => {
         </motion.div>
 
         <div className="md:col-span-6 md:col-start-7">
-          <p className="text-xl crenzo-font md:text-xl font-light leading-relaxed text-white/70">
+          <p className="text-xl  md:text-2xl font-light leading-relaxed text-white/70">
             NEZIN didn't start in a studio. It started as a digital whisper—a response to the noise of fast fashion. We believe apparel is the final layer of your digital identity.
           </p>
           <div className="mt-12 h-[1px] w-20 bg-white/20" />

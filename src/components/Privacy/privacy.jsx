@@ -68,7 +68,7 @@ const Privacy = () => {
             >
                 Legal_Interface_0.1
             </motion.span>
-            <h1 className="text-6xl md:text-5xl crenzo-font font-light tracking-tighter mb-10 leading-none">
+            <h1 className="text-3xl md:text-4xl crenzo-font font-light tracking-tighter mb-10 leading-none">
                 Privacy <br/> As An Art.
             </h1>
             <p className="text-white/40 max-w-sm text-sm leading-relaxed tracking-wide">
@@ -86,7 +86,7 @@ const Privacy = () => {
                     <span className="font-mono text-[9px] text-white/30 tracking-widest mb-4 block">
                         PROTOCOL_{p.tag}
                     </span>
-                    <h2 className="text-4xl md:text-6xl crenzo-font font-light tracking-tight mb-8">
+                    <h2 className="text-3xl md:text-6xl crenzo-font font-light tracking-tight mb-8">
                         {p.title}
                     </h2>
                     <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-md">

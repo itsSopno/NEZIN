@@ -7,12 +7,13 @@ import StoryMain from "../components/Main story/StoryMian";
 import MenMain from "../MEN Component/Main/MenMain";
 import Hero1 from "../MEN Component/Page1/page";
 import WomenMain from "../Women Component/WomenMain/womenMain";
-import Heroin1 from "../Women Component/Women/Heroin1";
+import Heroin1 from "../Women Component/Heroin1/heroin1";
 import MenGallery from "../MEN Component/Aesthetic/Aesthetic";
 import MenCollection from "../MEN Component/MenCollection/MenCollection";
 import ProductDetail from "../MEN Component/Winter Detail/WinterDetail";
 import ErrorBoundary from "../components/ErrorBoundary";
 import PaymentExample from "../components/Payment/PaymentExample";
+import Heroin from "../Women Component/Women/Heroin1";
 
 const Router = createBrowserRouter([
   {
@@ -108,7 +109,11 @@ const Router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Heroin1 />
+        element: <Heroin1></Heroin1>
+      },
+      {
+path : "Heroin",
+element :<Heroin></Heroin>
       },
       {
         path: ":id", // Added dynamic route for women's products too

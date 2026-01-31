@@ -21,3 +21,15 @@ canvas{
 .crenzo-font {
   font-family: 'CRENZO', sans-serif;
 }
+
+@font-face {
+  font-family:"MilkyWalky" ;
+  src: url('./Font2/MilkyWalky-Regular.otf') format("opentype"),
+      url("./Font2/MilkyWalky-Regular.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+}
+.milky-font{
+  font-family: "MilkyWalky" , sans-serif;
+}

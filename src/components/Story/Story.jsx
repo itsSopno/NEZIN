@@ -98,6 +98,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import Privacy from '../Privacy/privacy';
 
 const Story = () => {
   const containerRef = useRef(null);
@@ -112,6 +113,7 @@ const Story = () => {
   const textColor = useTransform(scrollYProgress, [0.4, 0.6], ["#ffffff", "#000000"]);
 
   return (
+    <>
     <motion.div 
       ref={containerRef} 
       style={{ backgroundColor: bgColor }} 
@@ -193,15 +195,19 @@ const Story = () => {
           />
           <div className="absolute inset-0 flex items-center justify-center bg-black/10">
              <Link 
-               to="/shop" 
+               to="/men" 
                className="px-8 md:px-12 py-3 md:py-4 bg-white text-black text-[10px] md:text-sm tracking-[0.3em] uppercase mix-blend-screen hover:bg-black hover:text-white transition-all text-center"
              >
-                Shop Collection
+                Men Collection
              </Link>
           </div>
         </motion.div>
       </div>
     </motion.div>
+    <section>
+      <Privacy></Privacy>
+    </section>
+    </>
   );
 };
 

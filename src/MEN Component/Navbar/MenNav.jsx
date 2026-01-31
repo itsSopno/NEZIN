@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 const CollectionNav = () => {
   const categories = [
     { name: "Outerwear", path: "/men" },
+    {
+      name :"Orders", path : "order"
+    },
     { name: "Winter Collection", path:"Products" },
     { name: "Trousers", path: "/trousers" },
     { name: "Aesthetic", path: "aesthetic" },

@@ -54,7 +54,7 @@ const Navbar = () => {
           
           {/* Dashboard Link for Owners */}
           {!loading && role === "owner" && (
-            <Link to="/dashboard" className="hover:text-white transition-colors cursor-pointer">
+            <Link to="/Dashboard" className="hover:text-white transition-colors cursor-pointer">
               Dashboard
             </Link>
           )}

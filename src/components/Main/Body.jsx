@@ -63,9 +63,9 @@ const Bbody = () => {
       <section className="relative z-20">
         <Story />
       </section>
-    <section>
+    {/* <section>
         <Privacy></Privacy>
-    </section>
+    </section> */}
     </div>
   );
 };

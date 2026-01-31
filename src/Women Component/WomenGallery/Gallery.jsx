@@ -116,10 +116,10 @@ const MuseArchive = () => {
 
             {/* Meaningful Text Content */}
             <div className="mt-12 space-y-4 max-w-sm">
-              <h3 className="text-3xl font-light tracking-tighter uppercase leading-none">
+              <h3 className="text-3xl milky-font font-light tracking-tighter uppercase leading-none">
                 {item.title}
               </h3>
-              <p className="text-white/40 text-sm leading-relaxed font-light">
+              <p className="text-white/40 text-sm  leading-relaxed font-light">
                 {item.description}
               </p>
               <motion.div 

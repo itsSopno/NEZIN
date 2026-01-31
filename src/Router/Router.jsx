@@ -14,6 +14,10 @@ import ProductDetail from "../MEN Component/Winter Detail/WinterDetail";
 import ErrorBoundary from "../components/ErrorBoundary";
 import PaymentExample from "../components/Payment/PaymentExample";
 import Heroin from "../Women Component/Women/Heroin1";
+import Board from "../Dasboard/BoardMain/Board";
+import Dashboard from "../Dasboard/Dasboard/Dasboard";
+import PaymentCollection from "../Dasboard/Winter Payment/Winpayment";
+import ProductEntryForm from "../Dasboard/addWinter/AddWinter";
 
 const Router = createBrowserRouter([
   {
@@ -59,15 +63,7 @@ const Router = createBrowserRouter([
           </div>
         </div>
       },
-      {
-        path: "/dashboard",
-        element: <div className="min-h-screen bg-black text-white flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-4xl font-light mb-4">Dashboard</h1>
-            <p className="text-white/60">Dashboard coming soon...</p>
-          </div>
-        </div>
-      },
+   
       {
         path: "/orders",
         element: <div className="min-h-screen bg-black text-white flex items-center justify-center">
@@ -76,6 +72,24 @@ const Router = createBrowserRouter([
             <p className="text-white/60">Orders page coming soon...</p>
           </div>
         </div>
+      }
+    ]
+  },
+  {
+    path: "/Dashboard",
+    element: <Board></Board>,
+    children: [
+      {
+        index: true,
+        element: <Dashboard></Dashboard>
+      },
+      {
+        path: "winter-payment",
+        element: <PaymentCollection></PaymentCollection>
+      },
+      {
+        path :"winter-entry",
+        element:<ProductEntryForm></ProductEntryForm>
       }
     ]
   },

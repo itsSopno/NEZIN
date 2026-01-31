@@ -10,6 +10,7 @@ const WomenNavbar = () => {
     { name: "Archives", path: "/women/archives", id: "01" },
     { name: "Technical_Sets", path: "/women/sets", id: "02" },
     { name: "Accessories", path: "/women/acc", id: "03" },
+    {name : "Home" , path :"/" , id:"04"}
   ];
 
   const toggleMobileMenu = () => {

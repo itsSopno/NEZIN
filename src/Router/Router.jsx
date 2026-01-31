@@ -15,7 +15,7 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import PaymentExample from "../components/Payment/PaymentExample";
 import Heroin from "../Women Component/Women/Heroin1";
 import Board from "../Dasboard/BoardMain/Board";
-import Dashboard from "../Dasboard/Dasboard/Dasboard";
+import AdminHome from "../Dasboard/Dasboard/Dasboard"
 import PaymentCollection from "../Dasboard/Winter Payment/Winpayment";
 import ProductEntryForm from "../Dasboard/addWinter/AddWinter";
 
@@ -81,7 +81,7 @@ const Router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Dashboard></Dashboard>
+        element: <AdminHome></AdminHome>
       },
       {
         path: "winter-payment",

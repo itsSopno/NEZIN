@@ -8,7 +8,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { signInWithGoogle } = UseAuth(); // Correct usage - call the hook and destructure
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || "/";
   
   // Logic for Google Login
   const handleGoogleLogin = async() => {

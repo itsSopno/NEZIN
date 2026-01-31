@@ -78,12 +78,12 @@ const AdminSidebar = () => {
 
       {/* FOOTER AREA */}
       <div className="space-y-4">
-        <button className="flex items-center gap-4 px-3 py-3 w-full text-white/40 hover:text-red-500 transition-colors">
+        <Link to="/." className="flex items-center gap-4 px-3 py-3 w-full text-white/40 hover:text-red-500 transition-colors">
           <LogOut size={20} />
           {(isOpen || isMobileOpen) && (
             <span className="text-[10px] uppercase tracking-[0.2em]">Disconnect</span>
           )}
-        </button>
+        </Link>
         {(isOpen || isMobileOpen) && (
           <div className="px-3">
             <div className="h-[1px] bg-white/5 w-full mb-4" />

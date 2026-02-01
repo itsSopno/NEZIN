@@ -5,9 +5,6 @@ import React, { useEffect } from "react";
 import App from "../../App";
 import Story from "../Story/Story";
 import Lenis from "@studio-freight/lenis";
-import StoryMain from "../Main story/StoryMian";
-import Privacy from "../Privacy/privacy";
-
 const Bbody = () => {
  useEffect(() => {
   if (typeof window === 'undefined') return;

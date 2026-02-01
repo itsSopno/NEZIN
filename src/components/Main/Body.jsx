@@ -1,20 +1,3 @@
-// import React from "react";
-// import App from "../../App";
-// import Story from "../Story/Story";
-// const Bbody = () => {
-//     return (
-// <>
-// <section>
-// <App></App>
-// </section>
-// <section>
-//     <Story></Story>
-// </section>
- 
-//     </>
-//     )
-// }
-// export default Bbody;
 
 // BETTER VERSION 
 

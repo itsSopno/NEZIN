@@ -9,7 +9,7 @@ const Preloader = ({ onComplete }) => {
   useEffect(() => {
     // If we've reached the last word, trigger completion after a brief pause
     if (index >= words.length - 1) {
-      const exitTimer = setTimeout(() => onComplete(), 2000);
+      const exitTimer = setTimeout(() => onComplete(), 1000);
       return () => clearTimeout(exitTimer);
     }
 

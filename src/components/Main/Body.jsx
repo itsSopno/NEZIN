@@ -9,35 +9,37 @@ import StoryMain from "../Main story/StoryMian";
 import Privacy from "../Privacy/privacy";
 
 const Bbody = () => {
-  useEffect(() => {
-    // Initialize Lenis
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Premium "OutQuart" easing
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false, // Usually disabled for better native mobile feel
-      touchMultiplier: 2,
-      infinite: false,
-    });
+ useEffect(() => {
+  if (typeof window === 'undefined') return;
 
-    // Sync Lenis with RequestAnimationFrame
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+  const isMobile =
+    window.matchMedia('(pointer: coarse)').matches ||
+    window.innerWidth < 768;
 
+  const lenis = new Lenis({
+    duration: isMobile ? 0.9 : 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    smoothTouch: true, // ENABLED for both
+    mouseMultiplier: 1,
+    touchMultiplier: isMobile ? 1.2 : 1,
+    infinite: false,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
     requestAnimationFrame(raf);
+  }
 
-    // Clean up on unmount
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
+  requestAnimationFrame(raf);
 
-  return (
+  return () => {
+    lenis.destroy();
+  };
+}, []);
+return (
     <div className="bg-[#050505]"> 
       <section>
         <App />

@@ -38,8 +38,18 @@ The system operates on a decentralized structure where the frontend communicates
 
 ### 1. Repository Access
 ```bash
-git clone [https://github.com/yourusername/nezin-archive.git](https://github.com/yourusername/nezin-archive.git)
+git clone [https://github.com/itsSopno/NEZIN.git]
 cd nezin-archive
 
+cd client
+npm install
+npm run dev
+cd server
+npm install
+# Configure your .env variables:
+# PORT=5000
+# MONGO_URI=your_mongodb_uri
+# IMGBB_KEY=your_imgbb_key
+npm start
 
 

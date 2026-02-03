@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import axios from 'axios';
-import UseAuth from '../components/Hooks/UseAuth';
+import UseAuth from '../../components/Hooks/UseAuth';
 import toast from 'react-hot-toast';
 
-const usePayment = () => {
+const UsePayment = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const stripe = useStripe();
@@ -23,7 +23,7 @@ const usePayment = () => {
     try {
       // Step 1: Create payment intent on your server
       const paymentIntentResponse = await axios.post(
-        'https://server-1-1-6g3a.onrender.com/payment',
+        'https://server-1-1-6g3a.onrender.com/female-payment',
         {
           amount: Math.round(paymentAmount * 100), // Convert to cents
           currency: 'usd',
@@ -31,7 +31,7 @@ const usePayment = () => {
           productName: productData.name,
           userId: user.uid,
           userEmail: user.email,
-          gender:"male",
+          gender:"female",
         },
         {
           headers: {
@@ -312,6 +312,6 @@ const usePayment = () => {
     error,
     isReady: !!(stripe && elements && user),
   };
-};
+}
 
-export default usePayment;
+export default UsePayment;

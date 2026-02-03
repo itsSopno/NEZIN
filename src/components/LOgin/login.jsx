@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import UseAuth from '../Hooks/UseAuth';
 import toast from 'react-hot-toast';
 import { saveOrUpdateUser } from '../../utility';
+
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();

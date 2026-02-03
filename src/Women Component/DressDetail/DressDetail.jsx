@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
-import BuyNowButton from "../../components/Payment/BuyNowButton";
+import BuyWomen from "../Payment for women/BuyWomen";
 
 const DressDetail = () => {
   const { id } = useParams();
@@ -176,7 +176,7 @@ const DressDetail = () => {
           {/* Call to Action */}
           <div className="space-y-6">
             {product.stock > 0 ? (
-              <BuyNowButton
+              <BuyWomen
                 product={getPaymentProductData()}
                 className="w-full bg-white text-black py-6 text-[12px] font-black uppercase tracking-[0.5em] hover:bg-transparent hover:text-white border border-white transition-all duration-500 flex items-center justify-center gap-3"
               >
@@ -184,7 +184,7 @@ const DressDetail = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
                 </svg>
                 Initialize_Acquisition
-              </BuyNowButton>
+              </BuyWomen>
             ) : (
               <motion.button 
                 disabled

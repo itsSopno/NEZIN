@@ -24,7 +24,7 @@ const WomenNavbar = () => {
     <>
       <nav className="fixed top-0 w-full z-[100] px-6 py-8 md:px-12 flex justify-between items-center mix-blend-difference">
         {/* BRAND LOGO */}
-        <Link to="/" className="group">
+        <Link to="/women" className="group">
           <motion.div className="flex flex-col">
             <span className="text-white text-xl md:text-2xl font-black tracking-tighter leading-none group-hover:italic transition-all">
               NEZIN

@@ -21,8 +21,10 @@ const AdminSidebar = () => {
     {
         name :"ADD WINTER COLLECTION" , path :"winter-entry",
     },
-    { name: "Winter Payment", path: "winter-payment", icon: <CreditCard size={20} />, id: "01" },
-    { name: "Summer Payment", path: "/Summer-payment", icon: <CreditCard size={20} />, id: "02" },
+    {
+name :"ADD WOMEN COLLECTION",path :"women-entry"
+    },
+    { name: "Total Payment", path: "winter-payment", icon: <CreditCard size={20} />, id: "01" },
     { name: "Muses", path: "/admin/customers", icon: <Users size={20} />, id: "03" },
     { name: "Acquisitions", path: "/admin/orders", icon: <ShoppingBag size={20} />, id: "04" },
     { name: "System_Config", path: "/admin/settings", icon: <Settings size={20} />, id: "05" },

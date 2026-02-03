@@ -39,7 +39,7 @@ const MuseArchive = () => {
       tag: "Street // Technical",
       title: "Urban Geometry",
       description: "Defying gravity through form. A high-contrast exploration of heavy cotton layers and tactical accessories.",
-      img: "https://freeimage.host/i/fLA7BiG", // Your urban streetwear girl image
+      img: "https://images.unsplash.com/photo-1588117260148-b47818741c74?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fGZhc2hpb258ZW58MHx8MHx8fDA%3D", // Your urban streetwear girl image
       layout: "md:col-span-4"
     },
     {

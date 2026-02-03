@@ -1,0 +1,131 @@
+[
+    {
+        "collection_name" : "NEZIN_WOMEN_COLLECTION",
+        "season" : "FOR WOMEN",
+        "FOR" : "Women",
+        "products":[
+           
+  {
+    "id": "AF-W26-OUT-01",
+    "name": "Suede Vegan Leather Moto Jacket",
+    "category": "Outerwear",
+    "price": 120,
+    "stock": 5,
+    "status": "IN_STOCK",
+    "description": "Classic asymmetrical moto jacket in a rich tan vegan suede. Features silver-tone hardware, notched lapels with snaps, and functional zip pockets.",
+    "image_ref": "https://i.postimg.cc/7YDsc6ZC/6e3b6cff7af0c7e6445103d02f2bef5e.jpg",
+    "tags": [
+      "Moto",
+      "Suede",
+      "Minimalist"
+    ]
+  },
+  {
+    "id": "ET-W26-OUT-02",
+    "name": "Geometric Patchwork Corduroy Shacket",
+    "category": "Outerwear",
+    "price": 65,
+    "stock": 4,
+    "status": "LOW_STOCK",
+    "description": "Cropped corduroy jacket featuring a unique split design with a neutral-toned geometric tribal pattern on one side. Finished with dropped shoulders and metallic buttons.",
+    "image_ref": "https://i.postimg.cc/T1c9GV3n/240d11718fc0fb99a9983b9a84600afa.jpg",
+    "tags": [
+      "Corduroy",
+      "Patchwork",
+      "Boho"
+    ]
+  },
+  {
+    "id": "KN-W26-SWT-03",
+    "name": "Chunky Pearl-Button Cable Cardigan",
+    "category": "Knitwear",
+    "price": 85,
+    "stock": 10,
+    "status": "IN_STOCK",
+    "description": "Cream-colored oversized cardigan with heavy cable knit detailing and decorative pearl-style buttons. Soft V-neckline and balloon sleeves for a cozy silhouette.",
+    "image_ref": "https://i.postimg.cc/RhjMSHp7/2caff9003590df6900453022743a4e57.jpg",
+    "tags": [
+      "Cable Knit",
+      "Pearl",
+      "Cozy"
+    ]
+  },
+  {
+    "id": "GR-W26-SWT-04",
+    "name": "Heritage Oversized Graphic Cardigan",
+    "category": "Knitwear",
+    "price": 95,
+    "stock": 2,
+    "status": "LOW_STOCK",
+    "description": "Vintage-inspired oversized cardigan in charcoal and grey knit. Features a complex abstract heritage pattern, dropped shoulders, and contrast ribbing.",
+    "image_ref": "https://i.postimg.cc/YC7vY58t/57b7ac29762af8fc0a5eeffe91c7fdde.jpg",
+    "tags": [
+      "Vintage",
+      "Oversized",
+      "Heritage"
+    ]
+  },
+  {
+    "id": "HD-W26-TOP-05",
+    "name": "Wildflower Embroidered Hoodie",
+    "category": "Tops",
+    "price": 750,
+    "stock": 2,
+    "status": "IN_STOCK",
+    "description": "Oatmeal-toned heavy fleece hoodie featuring delicate multi-colored floral embroidery across the shoulder and chest. High-quality needlework with purple and pink accents.",
+    "image_ref": "https://i.postimg.cc/SR8KzdMW/5ae5dd03e2e8e0f2c0de289da2a56ccf.jpg",
+    "tags": [
+      "Embroidery",
+      "Floral",
+      "Loungewear"
+    ]
+  },
+  {
+    "id": "FA-W26-SET-06",
+    "name": "Fair Isle Sweater & Denim Overall Set",
+    "category": "Sets",
+    "price": 140,
+    "stock": 5,
+    "status": "IN_STOCK",
+    "description": "A curated two-piece look featuring a mustard-tone Fair Isle knit sweater paired with high-waisted black denim overall shorts with silver button hardware.",
+    "image_ref": "https://i.postimg.cc/VLWfQdBd/3df6b4c2df4a6c1f0eadef6061d0d464.jpg",
+    "tags": [
+      "Fair Isle",
+      "Denim",
+      "Curated"
+    ]
+  },
+  {
+    "id": "BT-W26-TOP-07",
+    "name": "Tasseled Peplum Boho Blouse",
+    "category": "Tops",
+    "price": 48,
+    "stock": 20,
+    "status": "IN_STOCK",
+    "description": "Lightweight linen-blend tunic with a gathered peplum waist and geometric embroidery along the yoke. Features a self-tie tassel neckline and elasticated cuffs.",
+    "image_ref": "https://i.postimg.cc/placeholder/136c0f95ab338f538c7a935832faf5d0.jpg",
+    "tags": [
+      "Boho",
+      "Tunic",
+      "Embroidery"
+    ]
+  },
+  {
+    "id": "MK-W26-TOP-08",
+    "name": "Bell-Sleeve Floral Linen Tunic",
+    "category": "Tops",
+    "price": 55,
+    "stock": 1,
+    "status": "LOW_STOCK",
+    "description": "Sage green linen blouse with a deep V-neckline framed by purple rose embroidery. Features dramatic tiered bell sleeves and a drawstring tassel waist.",
+    "image_ref": "https://i.postimg.cc/65tK0Bsj/136c0f95ab338f538c7a935832faf5d0.jpg",
+    "tags": [
+      "Linen",
+      "Bell Sleeve",
+      "Floral"
+    ]
+  }
+]
+        
+    }
+]

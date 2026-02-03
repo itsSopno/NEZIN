@@ -57,7 +57,7 @@ const AddWomen = ({ collectionId }) => {
     };
 
     try {
-      const response = await fetch(`https://server-1-1-6g3a.onrender.com/women/697bfc3dc55c5d73850f2bb4/product`, {
+      const response = await fetch(`https://server-1-1-6g3a.onrender.com/women/69815932457d4ddae9c0ce52/product`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(finalPayload),

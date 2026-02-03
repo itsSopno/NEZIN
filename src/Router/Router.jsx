@@ -18,6 +18,9 @@ import Board from "../Dasboard/BoardMain/Board";
 import AdminHome from "../Dasboard/Dasboard/Dasboard"
 import PaymentCollection from "../Dasboard/Winter Payment/Winpayment";
 import ProductEntryForm from "../Dasboard/addWinter/AddWinter";
+import WomenMainPage from "../Women Component/Dress Collection/WomenMain";
+import DressDetail from "../Women Component/DressDetail/DressDetail";
+import AddWomen from "../Dasboard/addwomen/addWomen";
 
 const Router = createBrowserRouter([
   {
@@ -90,6 +93,10 @@ const Router = createBrowserRouter([
       {
         path :"winter-entry",
         element:<ProductEntryForm></ProductEntryForm>
+      },
+      {
+        path :"women-entry",
+        element:<AddWomen></AddWomen>
       }
     ]
   },
@@ -128,6 +135,14 @@ const Router = createBrowserRouter([
       {
 path : "Heroin",
 element :<Heroin></Heroin>
+      },
+      {
+        path :"WomenC",
+        element: <WomenMainPage></WomenMainPage>
+      },
+      {
+        path :":id",
+        element: <DressDetail></DressDetail>
       },
       {
         path: ":id", // Added dynamic route for women's products too

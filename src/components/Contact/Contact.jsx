@@ -21,7 +21,8 @@ const Contact = () => {
           >
             <img 
             //   src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&q=80" 
-            src="https://i.postimg.cc/JnWFvHJS/IMG-20260116-175859-631.webp"
+            // src="https://i.postimg.cc/JnWFvHJS/IMG-20260116-175859-631.webp"
+            src="https://i.pinimg.com/736x/d7/ec/70/d7ec702f33710dd9633e2f57f01ce4cf.jpg"
               alt="Editorial contact" 
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
             />

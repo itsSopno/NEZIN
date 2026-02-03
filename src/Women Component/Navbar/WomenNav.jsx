@@ -9,7 +9,8 @@ const WomenNavbar = () => {
   const navLinks = [
     { name: "Collection", path: "WomenC", id: "01" },
     { name: "Accessories", path: "/women/acc", id: "02" },
-    {name : "Home" , path :"/" , id:"03"}
+    {name : "Home" , path :"/" , id:"03"},
+    {name : "Cart", path:"/cart", id:"04"}
   ];
 
   const toggleMobileMenu = () => {
@@ -133,23 +134,6 @@ const WomenNavbar = () => {
                   </Link>
                 </motion.div>
               ))}
-
-              {/* Mobile Cart Link */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="mt-8"
-              >
-                <Link
-                  to="/cart"
-                  onClick={closeMobileMenu}
-                  className="text-white text-2xl font-light tracking-tighter hover:italic transition-all block text-center"
-                >
-                  <span className="text-sm text-white/40 font-mono block mb-2">[04]</span>
-                  Shopping_Bag
-                </Link>
-              </motion.div>
             </div>
 
             {/* Mobile System Status */}

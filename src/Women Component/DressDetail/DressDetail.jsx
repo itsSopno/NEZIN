@@ -50,7 +50,7 @@ const DressDetail = () => {
       description: product.description,
       price: parseFloat(product.price),
       stock: product.stock,
-      category: 'men', // Since this is in MEN Component
+      category: 'women', // Fixed: This is in WOMEN Component
       image: product.image_ref,
       tags: product.tags,
       status: product.status,

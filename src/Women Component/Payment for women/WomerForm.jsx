@@ -22,7 +22,13 @@ const WomerForm = ({ product, onSuccess, onCancel }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    console.log('Form submitted with product:', product);
+    console.log('Stripe ready:', !!stripe);
+    console.log('Elements ready:', !!elements);
+    console.log('User ready:', !!user);
+    
     if (!stripe || !elements || !user) {
+      console.error('Payment system not ready:', { stripe: !!stripe, elements: !!elements, user: !!user });
       return;
     }
 
@@ -33,7 +39,9 @@ const WomerForm = ({ product, onSuccess, onCancel }) => {
       quantity: product.quantity || 1,
     };
 
+    console.log('Calling processPayment with:', productData, product.price);
     const result = await processPayment(productData, product.price);
+    console.log('Payment result:', result);
     
     if (result.success) {
       onSuccess(result);

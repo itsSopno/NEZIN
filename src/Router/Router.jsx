@@ -21,6 +21,8 @@ import ProductEntryForm from "../Dasboard/addWinter/AddWinter";
 import WomenMainPage from "../Women Component/Dress Collection/WomenMain";
 import DressDetail from "../Women Component/DressDetail/DressDetail";
 import AddWomen from "../Dasboard/addwomen/addWomen";
+import FemalePaymentLedger from "../Women Component/Cart/Cart";
+import Collection from "../MEN Component/Payment Collection/Collection";
 
 const Router = createBrowserRouter([
   {
@@ -75,6 +77,10 @@ const Router = createBrowserRouter([
             <p className="text-white/60">Orders page coming soon...</p>
           </div>
         </div>
+      },
+      {
+        path: "/cart",
+        element: <FemalePaymentLedger />
       }
     ]
   },
@@ -97,6 +103,10 @@ const Router = createBrowserRouter([
       {
         path :"women-entry",
         element:<AddWomen></AddWomen>
+      },
+      {
+        path : "Cart",
+        element : <FemalePaymentLedger></FemalePaymentLedger>
       }
     ]
   },
@@ -112,6 +122,10 @@ const Router = createBrowserRouter([
       {
         path: "aesthetic",
         element: <MenGallery />
+      },
+      {
+        path :"CART",
+        element : <Collection></Collection>
       },
       {
         path: "Products",
@@ -133,8 +147,8 @@ const Router = createBrowserRouter([
         element: <Heroin1></Heroin1>
       },
       {
-path : "Heroin",
-element :<Heroin></Heroin>
+        path : "Heroin",
+        element :<Heroin></Heroin>
       },
       {
         path :"WomenC",
@@ -145,13 +159,8 @@ element :<Heroin></Heroin>
         element: <DressDetail></DressDetail>
       },
       {
-        path: ":id", // Added dynamic route for women's products too
-        element: <div className="min-h-screen bg-black text-white flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-4xl font-light mb-4">Product Details</h1>
-            <p className="text-white/60">Women's product page coming soon...</p>
-          </div>
-        </div>
+        path : "Cart",
+        element : <FemalePaymentLedger></FemalePaymentLedger>
       }
     ]
   }

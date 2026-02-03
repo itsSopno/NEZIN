@@ -17,11 +17,17 @@ const UsePayment = () => {
       return { success: false };
     }
 
+    // Debug logging
+    console.log('Processing payment for product:', productData);
+    console.log('Payment amount:', paymentAmount);
+    console.log('User:', user);
+
     setLoading(true);
     setError(null);
 
     try {
       // Step 1: Create payment intent on your server
+      console.log('Sending payment request to server...');
       const paymentIntentResponse = await axios.post(
         'https://server-1-1-6g3a.onrender.com/female-payment',
         {
@@ -31,12 +37,14 @@ const UsePayment = () => {
           productName: productData.name,
           userId: user.uid,
           userEmail: user.email,
-          gender:"female",
+          gender: "female",
+          category: productData.category || "women", // Ensure category is passed
         },
         {
           headers: {
             'Content-Type': 'application/json',
-          }
+          },
+          timeout: 30000, // 30 second timeout
         }
       );
 
@@ -110,10 +118,12 @@ const UsePayment = () => {
 
     } catch (err) {
       console.error('Payment error:', err);
+      console.error('Error response:', err.response?.data);
+      console.error('Error status:', err.response?.status);
       
       // If API call fails, create mock payment for practice
-      if (err.response?.status >= 400) {
-        console.log('API error, creating mock payment for practice...');
+      if (err.response?.status >= 400 || err.code === 'ECONNABORTED' || err.message.includes('timeout')) {
+        console.log('API error or timeout, creating mock payment for practice...');
         
         try {
           // Simulate payment processing delay
@@ -168,7 +178,7 @@ const UsePayment = () => {
         productName: productData.name,
         productPrice: productData.price,
         productImage: productData.image || '',
-        productCategory: productData.category || 'men',
+        productCategory: productData.category || 'women', // Ensure correct category
         quantity: productData.quantity || 1,
         totalAmount: paymentIntent.amount / 100, // Convert back from cents
         transactionId: paymentIntent.id,
@@ -197,6 +207,9 @@ const UsePayment = () => {
       if (productData.category === 'men') {
         await updateMenProductStock(productData.id, productData.quantity || 1);
       } else if (productData.category === 'women') {
+        await updateWomenProductStock(productData.id, productData.quantity || 1);
+      } else {
+        // Default to women for this component
         await updateWomenProductStock(productData.id, productData.quantity || 1);
       }
 
